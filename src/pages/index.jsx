@@ -10,6 +10,7 @@ const Index = () => {
   const [characters, setCharacters] = useState([]);
   const [page, setPage] = useState(1);
   const elementRef = useRef();
+  const { observerElement } = useObserver(elementRef);
 
   //! primera carga
   useEffect(() => {
@@ -25,8 +26,6 @@ const Index = () => {
       setCharacters((oldData) => [...oldData, ...peticion.results]);
     });
   }, [page]);
-
-  const { observerElement } = useObserver(elementRef);
 
   //! infinity scroll
   useEffect(() => {
